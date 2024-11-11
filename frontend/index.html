@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Markdown Paste Service</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Markdown Paste Service</h1>
+    
+    <!-- Form for adding a markdown paste -->
+    <form id="markdownForm">
+      <input type="text" id="title" placeholder="Title" required />
+      <textarea id="content" placeholder="Enter markdown text here" required></textarea>
+      <button type="submit">Save Paste</button>
+    </form>
+
+   
+    <!-- Success message -->
+    <div id="successMessage" style="display: none;">
+      <p>Paste saved! Access it <a id="pasteLink" href="#">here</a>.</p>
+    </div>
+  </div>
+  <script src="script.js" defer></script>
+</body>
+</html>

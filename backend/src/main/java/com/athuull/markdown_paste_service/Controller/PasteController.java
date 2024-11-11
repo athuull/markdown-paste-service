@@ -14,7 +14,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "/v1/api")
+@RequestMapping("/api/pastes")// Adjusted to reflect the resource "pastes"
+@CrossOrigin(origins = "http://127.0.0.1:5500")
 public class PasteController {
 
     private final PasteService pasteService;
@@ -24,11 +25,13 @@ public class PasteController {
         this.pasteService = pasteService;
     }
 
-    @GetMapping
-    public Optional<Paste> getPaste(String uniqueID) {
+    // Updated to use @PathVariable for retrieving uniqueID from URL
+    @GetMapping("/{uniqueID}")
+    public Optional<Paste> getPaste(@PathVariable String uniqueID) {
         return pasteService.getPaste(uniqueID);
     }
 
+    // Updated to follow REST conventions with the path '/api/pastes'
     @PostMapping
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Results are ok", content = {
@@ -38,6 +41,5 @@ public class PasteController {
     @Operation(summary = "Create a new Paste in DB")
     public Paste createPaste(@RequestBody PasteRequest request) {
         return pasteService.savePaste(request.getContent(), request.getTitle());
-
     }
 }
