@@ -8,7 +8,7 @@ import java.util.UUID;
 public class Paste {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, columnDefinition = "TEXT")
@@ -23,7 +23,10 @@ public class Paste {
     @Column(nullable = false, unique = true, updatable = false)
     private String uniqueID;
 
-    public Paste() {}
+    public Paste() {
+        this.uniqueID =  UUID.randomUUID().toString();
+    }
+
 
     public Paste(Long id, String content, LocalDateTime createdAt, String title, String uniqueID) {
         this.id = id;

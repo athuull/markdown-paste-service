@@ -7,8 +7,8 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface PasteRepository extends JpaRepository<Paste , Long> {
+public interface PasteRepository extends JpaRepository<Paste , String> {
 
-    // Spring Data JPA knows how to find uniqueId automatically!
-    Optional<Paste> findByUniqueId(String uniqueId);
+    // Spring Data JPA knows how to find uniqueID automatically!
+    Optional<Paste> findByUniqueID(String uniqueID);
 }
